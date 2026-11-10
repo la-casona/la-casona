@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Carta y datos · La Casona</title>
+<link rel="stylesheet" href="../css/menu-v2.css">
+<link rel="stylesheet" href="../css/admin.css">
+<script src="../js/vendor/supabase-js-2.57.4.js" defer></script>
+<script src="../js/cloud.js" defer></script>
+<script src="../js/v2/staff.js" defer></script>
+<script src="carta-admin.js" defer></script>
+</head>
+<body class="admin">
+<header class="adm-top">
+  <a class="adm-brand" href="../web/index.html#menu" aria-label="La Casona · Ir al menú"><img class="brand-logo" src="../images/logo-la-casona.png" width="1024" height="1024" alt="La Casona Restaurante" decoding="async"></a>
+  <nav class="adm-nav" aria-label="Administración">
+    <a href="../mesas/index.html" data-admin>Mesas y QR</a>
+    <a href="../administracion/index.html" aria-current="page" data-admin>Carta</a>
+    <a href="../cocina/index.html">Cocina</a>
+    <a href="../web/index.html#menu">Menú</a>
+  </nav>
+</header>
+
+<section class="gate" id="gate" aria-live="polite"></section>
+
+<main class="adm" id="app" hidden>
+  <section class="adm-hero">
+    <p class="adm-eyebrow">Administración</p>
+    <h1 class="adm-title">Carta <em>y</em> datos</h1>
+    <p class="adm-lead">Crea secciones y agrega, edita o elimina platillos. Ajusta nombres, precios, disponibilidad y visibilidad. Los cambios se ven en el menú al recargarlo.</p>
+  </section>
+
+  <section class="adm-panel" aria-labelledby="cfgTitle">
+    <h2 class="adm-h2" id="cfgTitle">Datos del restaurante</h2>
+    <form class="adm-cfg" id="cfgForm" novalidate>
+      <label class="field"><span class="label">Teléfono visible <em>como se mostrará</em></span><input class="input" name="telefono" maxlength="30" placeholder="33 1234 5678"></label>
+      <label class="field"><span class="label">WhatsApp de pedidos <em>solo dígitos · 521 + 10</em></span><input class="input" name="whatsapp" inputmode="numeric" maxlength="15" placeholder="5213312345678"><span class="err">Solo números (hasta 15).</span></label>
+      <label class="field"><span class="label">Envío a domicilio (MXN)</span><input class="input" name="envio_domicilio" type="number" min="0" step="1"></label>
+      <label class="field"><span class="label">Formas de pago <em>separadas por coma</em></span><input class="input" name="pagos" maxlength="120"><span class="err">Escribe al menos una.</span></label>
+      <label class="field"><span class="label">Sesión de mesa: minutos sin uso</span><input class="input" name="sesion_inactividad_min" type="number" min="10" max="600"></label>
+      <label class="field"><span class="label">Sesión de mesa: máximo de horas</span><input class="input" name="sesion_max_horas" type="number" min="1" max="24"></label>
+      <label class="adm-check"><input type="checkbox" name="recoger_en_sucursal"> Permitir “para recoger”</label>
+      <label class="adm-check"><input type="checkbox" name="pedidos_linea_activos"> Registrar pedidos en línea en cocina</label>
+      <button class="btn" type="submit" id="cfgBtn">Guardar datos</button>
+    </form>
+  </section>
+
+  <section class="adm-panel" aria-labelledby="createTitle">
+    <h2 class="adm-h2" id="createTitle">Agregar a la carta</h2>
+    <div class="carta-create-grid">
+      <form id="categoryForm" class="carta-create" novalidate>
+        <fieldset id="categoryFields" disabled>
+          <legend>Nueva sección</legend>
+          <label class="field"><span class="label">Nombre de la sección</span><input class="input" name="titulo" required maxlength="60" placeholder="Ej. Especiales de la casa" autocomplete="off"></label>
+          <p class="carta-form-message" id="categoryMessage" role="status" aria-live="polite"></p>
+          <button class="btn" type="submit">Crear sección</button>
+          <p class="adm-hint">Aparecerá en el menú cuando tenga al menos un platillo visible.</p>
+        </fieldset>
+      </form>
+      <form id="productForm" class="carta-create" novalidate>
+        <fieldset id="productFields" disabled>
+          <legend>Nuevo platillo</legend>
+          <label class="field"><span class="label">Sección</span><select class="input" name="categoria_id" required><option value="">Cargando secciones…</option></select></label>
+          <label class="field"><span class="label">Nombre del platillo</span><input class="input" name="nombre" required maxlength="80" placeholder="Ej. Enchiladas de la casa" autocomplete="off"></label>
+          <label class="field"><span class="label">Precio (MXN)</span><input class="input" name="precio" type="number" required min="0" max="99999.99" step="0.01" inputmode="decimal" placeholder="0.00"></label>
+          <label class="field"><span class="label">Descripción <em>opcional</em></span><textarea class="input" name="descripcion" maxlength="300" rows="2" placeholder="Ingredientes o detalles del platillo"></textarea></label>
+          <p class="carta-form-message" id="productMessage" role="status" aria-live="polite"></p>
+          <button class="btn" type="submit">Agregar platillo</button>
+          <p class="adm-hint" id="productHint">Se agrega disponible y visible, al final de la sección.</p>
+        </fieldset>
+      </form>
+    </div>
+  </section>
+
+  <section aria-labelledby="listTitle">
+    <div class="adm-listhead">
+      <h2 class="adm-h2" id="listTitle">Platillos</h2>
+      <div class="adm-tools">
+        <label class="adm-filter"><span class="vh">Buscar</span><input class="input" id="search" type="search" placeholder="Buscar platillo…"></label>
+        <label class="adm-filter"><span class="vh">Mostrar</span>
+          <select class="input" id="show"><option value="all">Todos</option><option value="out">Agotados</option><option value="hidden">Ocultos</option></select></label>
+      </div>
+    </div>
+    <p class="carta-form-message" id="cartaActionMessage" role="status" aria-live="polite"></p>
+    <div id="carta" aria-live="polite"><p class="adm-empty">Cargando carta…</p></div>
+  </section>
+</main>
+
+<dialog class="carta-editor" id="editProductDialog" aria-labelledby="editProductTitle" aria-describedby="editProductHelp">
+  <form id="editProductForm" novalidate>
+    <h2 class="adm-h2" id="editProductTitle">Editar platillo</h2>
+    <p class="adm-hint" id="editProductHelp">Los cambios se guardan en el mismo platillo, sin modificar los pedidos anteriores.</p>
+    <fieldset id="editProductFields">
+      <legend class="vh">Datos del platillo</legend>
+      <label class="field"><span class="label">Nombre</span><input class="input" name="nombre" required maxlength="80" autocomplete="off"></label>
+      <label class="field"><span class="label">Sección</span><select class="input" name="categoria_id" required></select></label>
+      <label class="field"><span class="label">Precio (MXN)</span><input class="input" name="precio" type="number" min="0" max="99999.99" step="0.01" inputmode="decimal" required></label>
+      <label class="field"><span class="label">Descripción <em>opcional</em></span><textarea class="input" name="descripcion" maxlength="300" rows="3"></textarea></label>
+      <div class="carta-edit-toggles">
+        <label class="adm-check"><input type="checkbox" name="disponible"> Disponible</label>
+        <label class="adm-check"><input type="checkbox" name="activo"> Visible en el menú</label>
+      </div>
+      <p class="adm-hint" id="editProductSectionHint"></p>
+    </fieldset>
+    <p class="carta-form-message" id="editProductMessage" role="status" aria-live="polite"></p>
+    <div class="carta-edit-footer">
+      <button class="btn btn--ghost" type="button" id="editProductCancel">Cancelar</button>
+      <button class="btn" type="submit" id="editProductSave">Guardar cambios</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

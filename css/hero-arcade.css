@@ -1,0 +1,210 @@
+/* Hero-only art direction: the arched threshold of a garden house.
+   Lower-page sections retain their existing CSS and behavior. */
+.arcade-experience .brand { mix-blend-mode: normal; }
+.arcade-experience .brand img { filter: invert(1) grayscale(1) contrast(1.2); }
+.arcade-experience .site-header { border-bottom-color: #2c482f28; }
+.arcade-experience .header-place { font-size: 9px; letter-spacing: .09em; }
+.arcade-experience .nav-toggle { min-height: 44px; font-size: 12px; }
+.arcade-experience .header-cta { min-height: 44px; }
+.arcade-hero {
+  --hero-green: #24432f;
+  --tile: #647344;
+  --rust: #9d4630;
+  position: relative;
+  isolation: isolate;
+  color: var(--hero-green);
+  background: #f4efdf;
+  padding-top: 19px;
+  overflow: hidden;
+}
+.arcade-hero .hero-meta {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 44px;
+  min-height: 47px;
+}
+.local-welcome { display: flex; align-items: center; gap: 12px; }
+.local-welcome .day-symbol { font-size: 29px; color: var(--rust); width: 29px; text-align: center; line-height: 1; }
+.local-welcome p { font-family: var(--serif); font-size: 17px; line-height: 1.2; letter-spacing: -.025em; }
+.local-welcome div > span { display: block; margin-top: 5px; font-size: 8px; letter-spacing: .11em; line-height: 1.3; }
+#local-clock { font-variant-numeric: tabular-nums; }
+.house-number { display: flex; flex-direction: column; align-items: center; padding: 0 15px; }
+.house-number > span { font-size: 7px; letter-spacing: .16em; }
+.house-number strong { font-family: var(--serif); font-style: italic; font-size: 29px; line-height: 1.15; font-weight: 400; letter-spacing: -.03em; }
+.arcade-hero .architectural-outline {
+  position: absolute; width: min(800px, 69vw); height: 840px;
+  top: 27px; left: 50%; translate: -50% 0; z-index: -1; pointer-events: none;
+  border: 1px solid #68734620; border-radius: 50% 50% 0 0 / 42% 42% 0 0;
+}
+.architectural-outline > span:first-child { position: absolute; inset: 13px; border: 1px solid #68734616; border-radius: inherit; }
+.architectural-outline > span:last-child { position: absolute; inset: 29px; border: 1px solid #68734612; border-radius: inherit; }
+.arcade-hero .hero-intro { margin: -31px auto 0; z-index: 5; pointer-events: auto; width: fit-content; max-width: calc(100% - 40px); }
+.arcade-hero .hero-eyebrow { font-size: 9px; letter-spacing: .2em; gap: 12px; }
+.arcade-hero h1 { margin: 13px auto 0; font-size: clamp(78px, 8.4vw, 132px); line-height: .98; letter-spacing: -.055em; font-weight: 620; font-variation-settings: 'SOFT' 85, 'WONK' 1; }
+/* Filter the actual letterforms in BOTH lines. No overlays or duplicated text.
+   Only the contour's strength settles; paper grain stays fixed. */
+.arcade-hero h1 .hero-line { filter: url('#casona-printed-ink'); }
+.arcade-hero h1 .hero-line:first-child { text-shadow: 0 1px 0 #d5c9a533; transform-origin: 50% 80%; }
+@media(max-width:700px) { .arcade-hero h1 .hero-line { filter: url('#casona-printed-ink-mobile'); } }
+@media(forced-colors:active) { .arcade-hero h1 .hero-line, .arcade-hero h1 .hero-line:first-child { filter: none; text-shadow: none; } }
+.arcade-hero h1 .hero-line { display: block; white-space: nowrap; }
+.arcade-hero .ornate-initial { font-style: italic; font-weight: 650; font-variation-settings: 'SOFT' 100, 'WONK' 1; color: var(--hero-green); }
+.arcade-hero h1 .hero-line-second { margin-top: .025em; transform-origin: 50% 80%; }
+.arcade-hero h1 em { font-weight: 460; letter-spacing: -.055em; }
+.arcade-hero .here-word { color: var(--rust); font-weight: 610; position: relative; }
+.arcade-hero .here-word::after { content: ''; position: absolute; width: 90%; height: 8px; border-top: 2px solid currentColor; border-radius: 50%; bottom: -6px; left: 5%; rotate: -3deg; }
+.arcade-hero .hero-subtitle { font-family: var(--serif); font-size: 19px; font-weight: 460; line-height: 1.45; margin: 22px auto 0; letter-spacing: -.02em; font-variation-settings: 'SOFT' 65, 'WONK' 1; }
+.hero-subtitle .welcome-invitation { display: block; }
+.hero-subtitle .welcome-home { display: block; font-size: 1.15em; font-weight: 520; color: var(--rust); }
+.mobile-copy-break { display: none; }
+.hero-actions { display: flex; justify-content: center; align-items: center; gap: 25px; margin-top: 18px; }
+.hero-menu-button { background: var(--hero-green); color: var(--cream); padding: 14px 23px; min-height: 46px; font-size: 12px; border-radius: 3px; gap: 35px; }
+.hero-menu-button:hover { background: #3f6243; }
+.hero-history-link { display: inline-flex; align-items: center; gap: 13px; min-height: 44px; font-size: 11px; text-decoration: underline; text-underline-offset: 5px; text-decoration-color: #24432f55; }
+.hero-history-link:hover { text-decoration-color: currentColor; }
+.hero-history-link > span { font-size: 17px; text-decoration: none; }
+.hero-menu-note { font-size: 7px; letter-spacing: .12em; display: block; margin: 10px auto 0; }
+/* Each photograph is a different view through the same architectural language. */
+.arcade-hero .arcade-collage { height: 270px; max-width: 1400px; width: 100%; margin: 8px auto 0; perspective: 1000px; }
+/* Fixed paper-stack order, including hover: never inherit the parent's layer. */
+.arcade-hero .hero-photo { --photo-layer: 1; transform: rotate(var(--rotate)); transition: none; will-change: auto; }
+.arcade-hero .photo-table, .arcade-hero .photo-food { --photo-layer: 2; }
+.arcade-hero .photo-patio { --photo-layer: 3; }
+.arcade-hero .hero-photo:hover { z-index: var(--photo-layer); filter: none; }
+.arcade-hero .photo-frame { width: 100%; height: 100%; border: 5px solid #f4efdf; padding: 3px; background: #758262; box-shadow: 0 8px 16px #263e2e1c; overflow: hidden; }
+.arcade-hero .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+.arcade-hero .photo-entrance { width: 19%; height: 201px; left: -2.5%; top: 0; --rotate: -12deg; z-index: 1; }
+.arcade-hero .photo-entrance .photo-frame { border-radius: 46% 46% 3px 3px; }
+.arcade-hero .photo-entrance img { border-radius: 46% 46% 1px 1px; }
+.arcade-hero .photo-table { width: 24%; height: 234px; left: 12.7%; top: 22px; --rotate: 7deg; z-index: 2; }
+.arcade-hero .photo-table .photo-frame { border-radius: 3px; }
+.arcade-hero .photo-table img { object-position: center 60%; }
+.arcade-hero .photo-patio { width: 27%; height: 277px; left: 36.5%; top: -10px; --rotate: -3deg; z-index: 3; }
+.arcade-hero .photo-patio .photo-frame { border-radius: 48% 48% 3px 3px; background: #3c5840; border-width: 6px; padding: 4px; }
+.arcade-hero .photo-patio img { border-radius: 48% 48% 1px 1px; }
+.arcade-hero .photo-food { width: 23%; height: 226px; left: 63.3%; top: 30px; --rotate: -7deg; z-index: 2; }
+.arcade-hero .photo-food .photo-frame { border-radius: 3px; }
+.arcade-hero .photo-garden { width: 19%; height: 229px; right: -2.5%; top: -2px; --rotate: 10deg; z-index: 1; }
+.arcade-hero .photo-garden .photo-frame { border-radius: 46% 46% 3px 3px; }
+.arcade-hero .photo-garden img { border-radius: 46% 46% 1px 1px; }
+.collage-sprig { position: absolute; z-index: 4; pointer-events: none; color: #4f6b3c; width: 68px; height: 114px; }
+.sprig-left { left: 12%; top: -83px; rotate: -28deg; }
+.sprig-right { right: 12%; top: -91px; rotate: 31deg; }
+.arcade-hero .hero-bottom { position: relative; z-index: 4; display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 23px 44px 22px; align-items: center; gap: 20px; }
+.arcade-hero .hero-bottom > p { font-size: 10px; line-height: 1.65; letter-spacing: .01em; }
+.arcade-hero .hero-bottom > p span { font-size: 9px; }
+.arcade-hero .scroll-cue { justify-self: center; margin: 0; font-size: 8px; gap: 12px; letter-spacing: .1em; white-space: nowrap; }
+.arcade-hero .scroll-arrow { border: 0; height: auto; font-size: 25px; width: auto; background: none; color: inherit; }
+.replay-entrance { justify-self: end; display: inline-flex; align-items: center; gap: 9px; border: 0; border-bottom: 1px solid #24432f55; background: none; padding: 10px 0; font-size: 10px; min-height: 44px; color: var(--hero-green); }
+.replay-entrance > span { font-size: 20px; line-height: 1; }
+.replay-entrance:hover { border-bottom-color: currentColor; }
+.replay-entrance:disabled { opacity: .5; cursor: default; }
+.hero-checker { height: 14px; background: conic-gradient(var(--tile) 25%, #f4efdf 0 50%, var(--tile) 0 75%, #f4efdf 0) 0 0 / 28px 28px; opacity: .85; }
+/* The entrance is not a modal. The header, menu and native scroll remain available. */
+.entry-stage { position: absolute; inset: 0; z-index: 12; background: #eee8d6; overflow: hidden; pointer-events: none; contain: paint; }
+.entry-stage[hidden], .replay-entrance[hidden], #clock-separator[hidden] { display: none; }
+.entry-canvas { position: absolute; inset: 0; opacity: 0; transition: opacity .25s ease; }
+.entry-canvas canvas { display: block; width: 100%; height: 100%; }
+.entry-stage.has-webgl .entry-canvas { opacity: 1; }
+.entry-fallback { position: absolute; inset: 17% -7% 0; display: flex; justify-content: center; gap: 26px; opacity: .22; }
+.entry-fallback > span { width: 28%; height: 110%; border: 22px double #687346; border-radius: 48% 48% 0 0; }
+.entry-fallback > span:nth-child(2) { translate: 0 -7%; }
+.entry-stage.has-webgl .entry-fallback { display: none; }
+.entry-caption { position: absolute; left: 20px; right: 20px; top: 9%; text-align: center; color: #24432f; transition: opacity .3s ease; }
+.entry-kicker { font-size: 9px; letter-spacing: .18em; }
+.entry-caption p { font-family: var(--serif); font-size: clamp(30px, 4.3vw, 64px); letter-spacing: -.045em; line-height: 1.1; margin-top: 17px; }
+.entry-caption p em { font-weight: 400; }
+.entry-status { font-size: 10px; display: block; margin-top: 18px; letter-spacing: .04em; }
+.loading-dots { display: inline-block; animation: entry-breathe .8s ease-in-out infinite alternate; }
+@keyframes entry-breathe { to { opacity: .25; } }
+.entry-controls { display: flex; justify-content: space-between; align-items: center; position: absolute; left: 33px; right: 33px; bottom: 29px; pointer-events: auto; }
+.entry-controls a, .entry-controls button { font: 11px var(--sans); display: flex; align-items: center; justify-content: center; gap: 15px; min-height: 44px; padding: 12px 17px; border: 1px solid #24432f70; border-radius: 3px; background: #f4efdf; color: #24432f; }
+.entry-controls a:hover, .entry-controls button:hover { background: #24432f; color: #f4efdf; }
+.entry-stage.is-leaving { opacity: 0; transition: opacity .42s ease; }
+.arcade-experience .motion-control { min-height: 34px; min-width: 34px; }
+@media(min-width:1600px) {
+  .arcade-hero .arcade-collage { height: 310px; margin-top: 18px; }
+  .arcade-hero .photo-patio { height: 308px; }
+  .arcade-hero .photo-table { height: 267px; }
+  .arcade-hero .photo-food { height: 262px; }
+  .arcade-hero .photo-garden { height: 260px; }
+  .arcade-hero .photo-entrance { height: 230px; }
+}
+@media(max-width:1050px) {
+  .arcade-hero .hero-meta { margin: 0 25px; }
+  .arcade-hero .hero-intro { margin-top: -13px; }
+  .local-welcome p { font-size: 14px; }
+  .local-welcome div > span { font-size: 7px; }
+  .house-number strong { font-size: 24px; }
+  .house-number > span { font-size: 6px; }
+  .arcade-hero h1 { font-size: 9.3vw; }
+  .arcade-hero .arcade-collage { height: 249px; margin-top: 15px; }
+  .arcade-hero .photo-patio { width: 30%; left: 35%; height: 251px; }
+  .arcade-hero .photo-table { width: 28%; left: 10%; height: 209px; }
+  .arcade-hero .photo-food { width: 28%; left: 63%; height: 195px; }
+  .arcade-hero .photo-entrance { width: 23%; left: -9%; height: 175px; }
+  .arcade-hero .photo-garden { width: 23%; right: -9%; height: 202px; }
+  .sprig-left { left: 8%; width: 52px; height: 89px; top: -75px; }
+  .sprig-right { right: 7%; width: 52px; height: 89px; top: -74px; }
+}
+@media(max-width:700px) {
+  .arcade-experience .site-header { padding: 0 16px; }
+  .arcade-experience .brand { top: 9px; }
+  .arcade-experience .nav-toggle { font-size: 10px; }
+  .arcade-hero { padding-top: 14px; }
+  .arcade-hero .hero-meta { margin: 0 22px; min-height: 43px; }
+  .local-welcome { gap: 8px; }
+  .local-welcome .day-symbol { font-size: 23px; width: 23px; }
+  .local-welcome p { font-size: 15px; }
+  .local-welcome div > span { font-size: 7px; letter-spacing: .07em; margin-top: 4px; }
+  .house-number { padding: 0 3px; }
+  .house-number strong { font-size: 24px; }
+  .house-number > span { font-size: 6px; }
+  .arcade-hero .architectural-outline { top: 40px; width: 94%; height: 850px; border-radius: 48% 48% 0 0 / 26% 26% 0 0; }
+  .architectural-outline > span:first-child { inset: 8px; }
+  .architectural-outline > span:last-child { display: none; }
+  .arcade-hero .hero-intro { margin: 31px auto 0; max-width: calc(100% - 24px); }
+  .arcade-hero .hero-eyebrow { font-size: 8px; letter-spacing: .14em; gap: 10px; }
+  .arcade-hero h1 { font-size: clamp(41px, 11.35vw, 77px); line-height: 1.04; letter-spacing: -.055em; margin-top: 14px; }
+  .arcade-hero h1 .hero-line-second { margin-top: 0; }
+  .arcade-hero .here-word::after { height: 6px; bottom: -5px; }
+  .arcade-hero .hero-subtitle { font-size: 16px; line-height: 1.45; margin: 22px auto 0; }
+  .mobile-copy-break { display: block; }
+  .hero-actions { gap: 19px; margin-top: 19px; }
+  .hero-menu-button { font-size: 12px; padding: 13px 17px; gap: 21px; }
+  .hero-history-link { font-size: 10px; gap: 8px; }
+  .hero-history-link > span { font-size: 15px; }
+  .hero-menu-note { margin-top: 10px; font-size: 6px; letter-spacing: .07em; }
+  .arcade-hero .arcade-collage { height: 232px; margin-top: 27px; }
+  .arcade-hero .photo-frame { border-width: 4px; padding: 2px; }
+  .arcade-hero .photo-patio { width: 50%; left: 25%; height: 225px; top: 1px; --rotate: -3deg; }
+  .arcade-hero .photo-patio .photo-frame { border-width: 4px; padding: 3px; }
+  .arcade-hero .photo-table { width: 39%; left: -10%; height: 177px; top: 27px; --rotate: -10deg; }
+  .arcade-hero .photo-food { width: 35%; left: 76%; height: 158px; top: 44px; --rotate: 11deg; }
+  .arcade-hero .photo-garden { width: 28%; right: -7%; top: -19px; height: 126px; --rotate: -9deg; z-index: 1; }
+  .arcade-hero .photo-entrance { display: none; }
+  .collage-sprig { display: none; }
+  .arcade-hero .hero-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 21px 24px 18px; }
+  .arcade-hero .hero-bottom > p { max-width: none; font-size: 9px; }
+  .arcade-hero .hero-bottom > p span { font-size: 8px; }
+  .arcade-hero .scroll-cue { grid-column: 1 / -1; grid-row: 2; font-size: 7px; min-height: 36px; gap: 10px; margin-top: 4px; }
+  .arcade-hero .scroll-arrow { font-size: 19px; }
+  .replay-entrance { font-size: 9px; gap: 6px; grid-column: 2; grid-row: 1; }
+  .replay-entrance > span { font-size: 19px; }
+  .hero-checker { height: 10px; background-size: 20px 20px; }
+  .entry-fallback { inset: 25% -70% 0; gap: 20px; }
+  .entry-fallback > span { border-width: 15px; }
+  .entry-caption { top: 12%; }
+  .entry-caption p { font-size: 38px; max-width: 295px; margin: 18px auto 0; }
+  .entry-kicker { font-size: 8px; }
+  .entry-status { font-size: 10px; }
+  .entry-controls { left: 20px; right: 20px; bottom: 24px; gap: 12px; }
+  .entry-controls a, .entry-controls button { font-size: 10px; padding: 12px 13px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .entry-stage { display: none !important; }
+  .arcade-hero *, .arcade-hero *::after { animation: none !important; transition: none !important; }
+}

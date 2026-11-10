@@ -1,0 +1,8 @@
+/* Nunito variable, alojada localmente. Licencia OFL en fonts/Nunito-OFL.txt. */
+@font-face {
+  font-family: 'Nunito';
+  src: url('../fonts/Nunito-Variable.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 200 1000;
+  font-display: swap;
+}

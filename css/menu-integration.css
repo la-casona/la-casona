@@ -1,0 +1,12 @@
+/* Native section, in the document flow: no iframe, frame, bounded height or internal scroll. */
+#menu.menu-native{position:relative;display:block;width:100%;height:auto;max-height:none;min-width:0;margin:0;padding:0;border:0;border-radius:0;box-shadow:none;overflow:visible;isolation:isolate;scroll-margin-top:0;background:#f3ede1}
+.menu-loading{padding:32px;text-align:center;font:16px/1.5 system-ui}
+html:has(#menu:target),html.qr-direct{scroll-padding-top:0!important}
+/* QR is a landing destination, not a different/shortened website.
+   Keep the hero, marquee and menu cover in flow so visitors can scroll back up. */
+.qr-direct #menu #modeCard{scroll-margin-top:12px}
+/* Reserve the original facade's height before decoding. The scoped `all:revert`
+   reset otherwise removes the width/height attributes' aspect-ratio hint. */
+#menu.menu-native .hero-facade img,#menu.menu-native .signoff-facade img{aspect-ratio:2078/757}
+#menu[data-native-ready] .cat{scroll-margin-top:70px}
+.motion-paused #menu *, .motion-paused #menu *::before, .motion-paused #menu *::after{animation-play-state:paused!important}

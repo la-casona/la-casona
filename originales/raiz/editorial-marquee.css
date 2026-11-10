@@ -1,0 +1,33 @@
+/* Editorial ribbon only; all selectors are scoped away from hero and navigation. */
+@font-face{font-family:'Antic Didone';src:url('../fonts/AnticDidone-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Marquee Anton';src:url('../fonts/Anton-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+.food-marquee{--mq-scale:.42;--mq-height:144px;position:relative;isolation:isolate;overflow:hidden;background:#eee9d9;color:#282820;height:var(--mq-height);border-block:1px solid #2c482f30}
+.food-marquee::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background:url('../assets/marquee/fondo-marfil-calido.webp') center/cover;mix-blend-mode:multiply;opacity:.28}
+.mq-window{position:relative;z-index:1;height:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;scrollbar-color:#55443866 transparent;mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent)}
+.mq-window:focus-visible{outline:2px solid #554438;outline-offset:-4px}
+.mq-track{display:flex;width:max-content;height:100%}
+.mq-sequence{list-style:none;margin:0;padding:0 28px;display:flex;align-items:center;gap:30px;width:max-content;height:100%;flex:none}
+.mq-item{position:relative;display:flex;flex-direction:column;align-items:center;flex:none;width:140px}
+.mq-title{font:400 36px/.9 'Antic Didone',Georgia,serif;font-synthesis:none;font-kerning:normal;letter-spacing:-.018em;text-align:center;white-space:nowrap}
+.mq-title span{display:block}.mq-item[data-voice='sans'] .mq-title{font-family:'Marquee Anton',sans-serif;font-weight:400;letter-spacing:-.025em}
+.mq-sprite{display:block;width:120px;height:80px;pointer-events:none;user-select:none}
+.mq-sprite img{display:block;width:100%;height:100%;object-fit:contain;max-width:none}
+.food-marquee[data-ready='true'] .mq-sequence{position:relative;display:block;width:var(--mq-sequence-width);height:100%;padding:0}
+.food-marquee[data-ready='true'] .mq-item{display:contents}
+.food-marquee[data-ready='true'] .mq-title{position:absolute;z-index:10;text-align:left;transform-origin:top left;line-height:.9}
+.food-marquee[data-ready='true'] .mq-sprite{position:absolute;z-index:20;height:auto}
+.food-marquee[data-ready='true'] .mq-sprite img{height:auto;aspect-ratio:var(--image-ratio)}
+.food-marquee[data-moving='true'] .mq-window{overflow-x:hidden}
+/* Keep inert copies during pauses: removing them clamps scrollLeft near the seam.
+   Only the reference study intentionally shows a single sequence. */
+.food-marquee[data-reference='true'] [data-clone]{display:none}
+.food-marquee[data-moving='true'] .mq-sprite img{animation:mq-breathe 6s ease-in-out infinite;animation-delay:var(--float-delay,0s)}
+@keyframes mq-breathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-1px)}}
+.food-marquee[data-offscreen='true'] .mq-sprite img{animation-play-state:paused}
+@media(min-width:1600px){.food-marquee{--mq-scale:.48;--mq-height:158px}}
+@media(max-width:900px){.food-marquee{--mq-scale:.38;--mq-height:132px}}
+@media(prefers-reduced-motion:reduce){.mq-sprite img{animation:none!important}}
+.motion-paused .mq-sprite img{animation:none!important}
+/* Whole-sequence study: real current spacing, no longer a promise of the old canvas geometry. */
+.food-marquee[data-reference='true']{--mq-scale:1;--mq-height:793px;height:793px;border:0}
+.food-marquee[data-reference='true'] .mq-window{mask-image:none;-webkit-mask-image:none;overflow:hidden}

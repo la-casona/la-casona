@@ -1,0 +1,6 @@
+/* Only the embedded application loses its extra cover: the site's hero stays intact. */
+html.menu-embedded{scroll-behavior:auto}
+.menu-embedded .hero-title,.menu-embedded .hero-stage{display:none!important}
+.menu-embedded .hero{padding-top:12px}
+.menu-embedded .mode-card{margin-top:0}
+.integration-motion-paused *, .integration-motion-paused *::before, .integration-motion-paused *::after{animation-play-state:paused!important}

@@ -1,0 +1,131 @@
+/* La Casona · v6 «Seda» aportada por el propietario.
+   CSS del standalone, sin el envoltorio de trabajo. Rutas adaptadas al sitio.
+   Ilustraciones acotadas a .food-marquee para no afectar al resto de la página. */
+@font-face{font-family:'Antic Didone';src:url('../fonts/AnticDidone-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Marquee Anton';src:url('../fonts/Anton-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+.food-marquee{--mq-scale:.42;--mq-height:180px;--mq-ink:#171410;position:relative;isolation:isolate;overflow:hidden;background:#efe8d8;color:var(--mq-ink);height:var(--mq-height)}
+.food-marquee::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background:url('../assets/marquee/fondo-marfil-calido.webp') center/cover;mix-blend-mode:multiply;opacity:.28}
+.mq-waves{position:absolute;inset:0;z-index:0;width:100%;height:100%;display:block;pointer-events:none}
+.mq-rules{position:absolute;inset:0;z-index:2;pointer-events:none;mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent)}
+.mq-rules svg{display:block;width:100%;height:100%;overflow:visible}
+.mq-window{position:relative;z-index:1;height:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;scrollbar-color:#17141044 transparent;mask-image:linear-gradient(90deg,transparent,#000 32px,#000 calc(100% - 32px),transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 32px,#000 calc(100% - 32px),transparent)}
+.mq-window:focus-visible{outline:2px solid var(--mq-ink);outline-offset:-4px}
+.mq-track{display:flex;width:max-content;height:100%}
+.mq-sequence{list-style:none;margin:0;padding:0 28px;display:flex;align-items:center;gap:30px;width:max-content;height:100%;flex:none}
+.mq-item{position:relative;display:flex;flex-direction:column;align-items:center;flex:none;width:140px}
+.mq-title{font:400 36px/.9 'Antic Didone',Georgia,serif;font-synthesis:none;font-kerning:normal;letter-spacing:-.018em;text-align:center;white-space:nowrap;color:var(--mq-ink)}
+.mq-title span{display:block}
+.mq-item[data-voice='sans'] .mq-title{font-family:'Marquee Anton',sans-serif;font-weight:400;letter-spacing:-.025em}
+.mq-sprite{display:block;width:120px;height:80px;pointer-events:none;user-select:none}
+.mq-sprite img{display:block;width:100%;height:100%;object-fit:contain;max-width:none}
+.mq-orn{display:none;pointer-events:none;user-select:none}
+.food-marquee[data-ready='true'] .mq-sequence{position:relative;display:block;width:var(--mq-sequence-width);height:100%;padding:0}
+.food-marquee[data-ready='true'] .mq-item{display:contents}
+.food-marquee[data-ready='true'] .mq-title{position:absolute;z-index:10;text-align:left;transform-origin:top left;line-height:.9}
+.food-marquee[data-ready='true'] .mq-sprite{position:absolute;z-index:20;height:auto}
+.food-marquee[data-ready='true'] .mq-sprite img{height:auto;aspect-ratio:var(--image-ratio);filter:drop-shadow(0 6px 5px rgba(40,28,18,.12))}
+.food-marquee[data-moving='true'] .mq-window{overflow-x:hidden}
+.food-marquee[data-reference='true'] [data-clone]{display:none}
+.food-marquee[data-moving='true'] .mq-sprite img{animation:mq-breathe 6s ease-in-out infinite;animation-delay:var(--float-delay,0s)}
+@keyframes mq-breathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-1px)}}
+/* Guirnaldas florales */
+.mq-rules .g-leaf{animation:g-leaf 1.9s steps(3) infinite alternate}
+@keyframes g-leaf{from{transform:rotate(-7deg)}to{transform:rotate(8deg)}}
+.mq-rules .g-turn{animation:g-turn 7s steps(30) infinite}
+@keyframes g-turn{to{transform:rotate(72deg)}}
+.mq-rules .g-bloom{animation:g-bloom 2.6s steps(4) infinite alternate}
+@keyframes g-bloom{from{transform:scale(.88) rotate(0)}to{transform:scale(1.06) rotate(12deg)}}
+.mq-rules .g-sway{animation:g-sway 1.6s steps(4) infinite alternate}
+@keyframes g-sway{from{transform:rotate(-10deg)}to{transform:rotate(10deg)}}
+/* Ilustraciones entre platillos */
+.food-marquee[data-ready='true'] .mq-orn{display:block;position:absolute;z-index:15}
+.mq-orn>svg{display:block;width:100%;height:100%;overflow:visible}
+.food-marquee .o-clink-l{animation:o-clink-l 1.6s steps(4) infinite alternate}
+.food-marquee .o-clink-r{animation:o-clink-r 1.6s steps(4) infinite alternate}
+@keyframes o-clink-l{from{transform:rotate(0)}to{transform:rotate(8deg)}}
+@keyframes o-clink-r{from{transform:rotate(0)}to{transform:rotate(-8deg)}}
+.food-marquee .o-swing{animation:o-swing 1.4s steps(5) infinite alternate}
+@keyframes o-swing{from{transform:rotate(-9deg)}to{transform:rotate(9deg)}}
+.food-marquee .o-sway{animation:o-sway 1.15s steps(4) infinite alternate}
+@keyframes o-sway{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
+.food-marquee .o-sway-soft{animation:o-sway-soft 1.7s steps(5) infinite alternate}
+.food-marquee .o-sway-soft.o-late{animation-delay:-.85s}
+@keyframes o-sway-soft{from{transform:rotate(-6deg)}to{transform:rotate(7deg)}}
+/* Pizza */
+.food-marquee .o-bflip{animation:o-bflip 4.2s steps(1) infinite}
+@keyframes o-bflip{0%,56%{transform:scaleX(1)}60%{transform:scaleX(.55)}64%{transform:scaleX(.12)}68%{transform:scaleX(-.55)}72%,84%{transform:scaleX(-1)}88%{transform:scaleX(-.4)}92%{transform:scaleX(.3)}96%,100%{transform:scaleX(1)}}
+.food-marquee .o-bback{opacity:0;animation:o-bback 4.2s steps(1) infinite}
+@keyframes o-bback{0%,67%{opacity:0}68%,87%{opacity:1}88%,100%{opacity:0}}
+.food-marquee .o-tbounce,.food-marquee .o-tshadow{animation:o-tbounce 1.9s steps(1) infinite;animation-delay:-.9s}
+.food-marquee .o-tshadow{animation-name:o-tshadow}
+@keyframes o-tbounce{0%,100%{transform:translateY(0) scale(1,1)}8%{transform:translateY(0) scale(1.14,.84)}16%{transform:translateY(-6px) scale(.92,1.1)}24%{transform:translateY(-8px) scale(1,1)}32%{transform:translateY(-5px) scale(.96,1.05)}40%{transform:translateY(0) scale(1.12,.86)}48%{transform:translateY(0) scale(.98,1.03)}56%{transform:translateY(0) scale(1,1)}}
+@keyframes o-tshadow{0%,100%{transform:scaleX(1);opacity:1}8%{transform:scaleX(1.12)}16%{transform:scaleX(.72);opacity:.7}24%{transform:scaleX(.62);opacity:.55}32%{transform:scaleX(.76);opacity:.7}40%{transform:scaleX(1.1);opacity:1}56%{transform:scaleX(1)}}
+/* Limón exprimido */
+.food-marquee .o-lsq{animation:o-lsq 3.6s infinite;animation-timing-function:steps(2)}
+@keyframes o-lsq{0%,10%{transform:translateY(0) scale(1,1) rotate(0)}16%{transform:translateY(1px) scale(1.08,.88) rotate(-4deg)}24%{transform:translateY(1.6px) scale(1.18,.72) rotate(5deg)}34%{transform:translateY(1.6px) scale(1.2,.68) rotate(-5deg)}44%{transform:translateY(1.6px) scale(1.16,.74) rotate(4deg)}52%{transform:translateY(-1.6px) scale(.94,1.08) rotate(0)}58%{transform:translateY(0) scale(1.02,.98)}64%,100%{transform:translateY(0) scale(1,1)}}
+.food-marquee .o-lpress{opacity:0;animation:o-lpress 3.6s steps(1) infinite}
+@keyframes o-lpress{0%,15%{opacity:0}16%{opacity:1}28%{opacity:.35}32%{opacity:1}46%,100%{opacity:0}}
+.food-marquee .o-lstream{opacity:0;animation:o-lstream 3.6s infinite;animation-timing-function:steps(2)}
+@keyframes o-lstream{0%,16%{transform:translateY(0) scaleY(0);opacity:0}18%{transform:translateY(0) scaleY(.4);opacity:1}22%,46%{transform:translateY(0) scaleY(1);opacity:1}50%{transform:translateY(8px) scaleY(.45);opacity:1}54%,100%{transform:translateY(16px) scaleY(.1);opacity:0}}
+.food-marquee .o-llevel{animation:o-llevel 3.6s infinite}
+@keyframes o-llevel{0%,18%{transform:translateY(8px);animation-timing-function:steps(6)}46%{transform:translateY(0)}78%{transform:translateY(0);animation-timing-function:steps(5)}96%,100%{transform:translateY(8px)}}
+.food-marquee .o-lsplash{opacity:0;animation:o-lsplash 3.6s steps(1) infinite}
+@keyframes o-lsplash{0%,22%{opacity:0;transform:scale(.4)}24%{opacity:1;transform:scale(1)}30%{transform:scale(.7)}36%{transform:scale(1.1)}42%{transform:scale(.8)}50%{opacity:1;transform:scale(1)}54%,100%{opacity:0}}
+.food-marquee .o-ldrop{opacity:0;animation:o-ldrop 3.6s infinite;animation-timing-function:steps(2)}
+@keyframes o-ldrop{0%,52%{opacity:0;transform:translateY(0)}54%{opacity:1;transform:translateY(0)}60%{transform:translateY(6px)}66%{opacity:1;transform:translateY(13px)}68%,100%{opacity:0;transform:translateY(13px)}}
+.food-marquee .o-lice{animation:o-lice 1.2s steps(3) infinite alternate}
+@keyframes o-lice{from{transform:translateY(0) rotate(10deg)}to{transform:translateY(1.4px) rotate(-6deg)}}
+/* Cócteles */
+.food-marquee .o-star{animation:o-spin 9s steps(63) infinite}
+@keyframes o-spin{to{transform:rotate(360deg)}}
+.food-marquee .o-draw{stroke-dasharray:1 1;stroke-dashoffset:0;animation:o-draw 3.6s infinite both;animation-timing-function:steps(4)}
+@keyframes o-draw{0%{stroke-dashoffset:1}16%{stroke-dashoffset:0}76%{stroke-dashoffset:0}94%,100%{stroke-dashoffset:-1}}
+.food-marquee .o-pop{animation:o-pop 3.6s steps(1) infinite both}
+@keyframes o-pop{0%,18%{transform:scale(0)}22%{transform:scale(1.35)}26%,78%{transform:scale(1)}82%{transform:scale(.6)}86%,100%{transform:scale(0)}}
+/* Mixología */
+.food-marquee .o-mleaf{animation:o-mleaf 1.3s steps(3) infinite alternate}
+@keyframes o-mleaf{from{transform:rotate(-8deg)}to{transform:rotate(10deg)}}
+.food-marquee .o-mfall{animation:o-mfall 5s infinite both;animation-timing-function:steps(2)}
+@keyframes o-mfall{0%,52%{transform:translate(0,0) rotate(0) scale(1);opacity:1}56%{transform:translate(2px,3px) rotate(18deg) scale(1)}62%{transform:translate(-3px,9px) rotate(-24deg) scale(1)}68%{transform:translate(4px,15px) rotate(28deg) scale(1)}74%{transform:translate(-2px,21px) rotate(-16deg) scale(1);opacity:.85}80%{transform:translate(3px,26px) rotate(12deg) scale(1);opacity:0}81%{transform:translate(0,0) rotate(0) scale(0);opacity:0}84%{transform:translate(0,0) rotate(0) scale(.3);opacity:1}90%{transform:translate(0,0) rotate(0) scale(.75);opacity:1}96%,100%{transform:translate(0,0) rotate(0) scale(1);opacity:1}}
+/* Agave */
+.food-marquee .o-agleaf{animation:o-agleaf 1.8s steps(4) infinite alternate}
+@keyframes o-agleaf{from{transform:rotate(-2.5deg)}to{transform:rotate(3deg)}}
+.food-marquee .o-quiote{stroke-dasharray:1 1;animation:o-quiote 5s infinite both;animation-timing-function:steps(8)}
+@keyframes o-quiote{0%,8%{stroke-dashoffset:1;opacity:1}44%{stroke-dashoffset:0;opacity:1}86%{stroke-dashoffset:0;opacity:1}94%,100%{stroke-dashoffset:0;opacity:0}}
+.food-marquee .o-bloom{animation:o-bloom 5s steps(1) infinite both}
+@keyframes o-bloom{0%,44%{transform:scale(0);opacity:1}48%{transform:scale(1.35);opacity:1}52%,86%{transform:scale(1);opacity:1}90%{transform:scale(1);opacity:.5}94%,100%{transform:scale(1);opacity:0}}
+/* Parrilla */
+.food-marquee .fl{display:none}
+.food-marquee:not([data-f]) .fl0,.food-marquee[data-f='0'] .fl0,.food-marquee[data-f='1'] .fl1,.food-marquee[data-f='2'] .fl2,.food-marquee[data-f='3'] .fl3{display:inline}
+.food-marquee .o-glow{animation:o-glow 1.15s steps(1) infinite}
+@keyframes o-glow{0%,100%{opacity:.85}25%{opacity:1}45%{opacity:.7}70%{opacity:.95}}
+.food-marquee .o-ember{opacity:0;animation:o-ember 1.7s infinite;animation-timing-function:steps(6)}
+@keyframes o-ember{0%{transform:translate(0,0);opacity:0}12%{opacity:1}50%{transform:translate(2px,-8px);opacity:1}100%{transform:translate(-1.5px,-17px);opacity:0}}
+.food-marquee .o-smoke{opacity:0;animation:o-smoke 2.8s infinite;animation-timing-function:steps(7)}
+@keyframes o-smoke{0%{transform:translate(0,4px) scale(.7);opacity:0}30%{opacity:1}100%{transform:translate(2px,-5px) scale(1.15);opacity:0}}
+/* Hamburguesa */
+.food-marquee .o-squish{animation:o-squish 1.9s steps(1) infinite}
+@keyframes o-squish{0%,100%{transform:scale(1,1)}10%{transform:scale(1.06,.9)}20%{transform:scale(.97,1.05)}30%{transform:scale(1.02,.98)}40%{transform:scale(1,1)}}
+.food-marquee .o-bun{animation:o-bun 1.9s steps(1) infinite}
+@keyframes o-bun{0%,100%{transform:translateY(0)}10%{transform:translateY(1.4px)}20%{transform:translateY(-3.4px)}30%{transform:translateY(-.8px)}40%{transform:translateY(0)}}
+.food-marquee .o-flag{animation:o-flag .86s steps(3) infinite alternate}
+@keyframes o-flag{from{transform:scaleX(1) skewY(0)}to{transform:scaleX(.82) skewY(-10deg)}}
+/* Brindis */
+.food-marquee .o-cheers-l{animation:o-cheers-l 2.4s steps(3) infinite}
+.food-marquee .o-cheers-r{animation:o-cheers-r 2.4s steps(3) infinite}
+@keyframes o-cheers-l{0%,30%,100%{transform:rotate(0)}45%,60%{transform:rotate(6deg)}}
+@keyframes o-cheers-r{0%,30%,100%{transform:rotate(0)}45%,60%{transform:rotate(-6deg)}}
+.food-marquee .o-marks{opacity:0;animation:o-marks 2.4s steps(1) infinite}
+@keyframes o-marks{0%,44%{opacity:0;transform:scale(.6)}46%{opacity:1;transform:scale(1)}56%{opacity:1;transform:scale(1.15)}62%,100%{opacity:0}}
+/* Pausa total */
+.food-marquee[data-anim='false'] *{animation-play-state:paused!important}
+.food-marquee[data-offscreen='true'] .mq-sprite img{animation-play-state:paused}
+@media(min-width:1600px){.food-marquee{--mq-scale:.48;--mq-height:196px}}
+@media(max-width:900px){.food-marquee{--mq-scale:.38;--mq-height:164px}}
+@media(prefers-reduced-motion:reduce){.food-marquee *{animation:none!important}.food-marquee :is(.o-marks,.o-lpress,.o-lstream,.o-lsplash,.o-ldrop,.o-ember,.o-smoke){display:none}}
+.motion-paused .food-marquee *{animation:none!important}
+.motion-paused .food-marquee :is(.o-marks,.o-lpress,.o-lstream,.o-lsplash,.o-ldrop,.o-ember,.o-smoke){display:none}
+.food-marquee[data-reference='true']{--mq-scale:1;--mq-height:793px;height:793px}
+.food-marquee[data-reference='true'] :is(.mq-waves,.mq-orn,.mq-rules){display:none}
+.food-marquee[data-reference='true'] .mq-window{mask-image:none;-webkit-mask-image:none;overflow:hidden}
+.mq-defs{position:absolute;width:0;height:0;overflow:hidden}

@@ -1,0 +1,11 @@
+/* Isolate the supplied menu application's global styles from the historical site. */
+.menu-app{background:#f3ede1;color:#1d1813;scroll-margin-top:0;position:relative;padding:0!important;width:100%;isolation:isolate}
+.menu-app-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px clamp(16px,4vw,48px);border-block:1px solid #cdbfa6;font:14px/1.4 'Nunito',system-ui,sans-serif}
+.menu-app-toolbar h2{margin:0;font:inherit;font-weight:800;text-transform:none;letter-spacing:0}
+.menu-app-toolbar a{color:inherit;text-underline-offset:3px;min-height:44px;display:flex;align-items:center}
+#menu-app-frame{display:block;border:0;width:100%;height:100vh;height:100svh;background:#f3ede1}
+.qr-direct #inicio,.qr-direct #marquee-gastronomico{display:none!important}
+html:has(#menu:target),html.qr-direct{scroll-padding-top:0!important}
+.qr-direct{scroll-behavior:auto!important}
+@media(max-width:600px){.menu-app-toolbar{font-size:12px;gap:8px}.menu-app-toolbar h2{max-width:90px}#menu-app-frame{height:calc(100svh - 69px);min-height:480px}}
+@media print{#menu-app-frame{height:auto}.menu-app-toolbar{display:none}}

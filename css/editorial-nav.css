@@ -1,0 +1,189 @@
+/* SOMA approved navigation, 1505 × 1045. Independent raster stems, live HTML type.
+   One isolated scene: paper 0 / forest 1 / logo 10 / text 12 / botanical 15 /
+   table 20 / agave 25 / arch 30 / star 40 / close 50. No interface shadows. */
+/* Owner-designed ManEater: original WOFF2, no synthetic weight or width distortion. */
+@font-face {font-family:'ManEater';src:url('../fonts/ManEater.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+.site-menu.editorial-menu {
+  position:fixed; inset:0; width:100%; height:100%; height:100dvh;
+  max-width:none; max-height:none; margin:0; padding:0; border:0;
+  background:#f0ebdd; color:#183a2b; box-shadow:none; overflow:auto;
+  overscroll-behavior:contain; scrollbar-width:thin;
+}
+.site-menu.editorial-menu::backdrop {background:#f0ebdd; backdrop-filter:none;}
+.editorial-nav {
+  --nav-red:#ad321f; --nav-green:#183a2b;
+  position:relative; isolation:isolate; container-type:inline-size;
+  width:100%; height:100%; min-height:520px; overflow:hidden;
+  background:#f0ebdd url('../assets/nav/fondo-marfil-texturizado.webp') center/cover no-repeat;
+}
+.editorial-nav .nav-art {pointer-events:none; user-select:none;}
+.editorial-nav img {display:block; max-width:none; border:0;}
+.nav-forest {position:absolute; z-index:1; left:59.759865%; top:0; width:19.895814%; height:100%; background:var(--nav-green); pointer-events:none;}
+.nav-signature {position:absolute; z-index:10; left:5.51%; top:4.11%; width:11.83%; aspect-ratio:974/505;}
+/* Alpha bounds in source: [40,267,1014,772]. Uniform scale, no logo redraw. */
+.nav-signature img {position:absolute; width:105.13347%; height:auto; left:-4.10678%; top:-52.87129%;}
+.editorial-menu .nav-index {position:absolute; inset:0; z-index:12; pointer-events:none;}
+.site-menu.editorial-menu .nav-index > .nav-entry {
+  position:absolute; left:4.78%; width:41.9%; display:block; margin:0; padding:0;
+  border:0; color:var(--nav-green); font-family:'ManEater',Georgia,serif;
+  font-weight:400; font-style:normal; font-synthesis:none; font-kerning:normal;
+  font-variation-settings:normal;
+  letter-spacing:0; line-height:1; text-decoration:none; pointer-events:auto;
+  transition:none; background:none;
+}
+.site-menu.editorial-menu .nav-entry:hover {padding:0;}
+.nav-entry-1 {top:18.4%; height:16%;}
+.nav-entry-2 {top:37.6%; height:9.8%;}
+.nav-entry-3 {top:51.45%; height:9.8%;}
+.nav-entry-4 {top:65.3%; height:9.8%;}
+.site-menu.editorial-menu .nav-entry .nav-label {
+  display:block; position:absolute; left:14.439%; top:0;
+  font:inherit; font-size:6.86cqw; line-height:1; white-space:nowrap;
+  letter-spacing:-.025em; transform-origin:left center;
+}
+.site-menu.editorial-menu .nav-entry-1 .nav-label {left:12.5298%; font-size:13.30cqw; letter-spacing:-.006em; color:var(--nav-red);}
+.site-menu.editorial-menu .nav-entry .nav-number {
+  position:absolute; left:0; top:50%; transform:translateY(-50%);
+  font-family:Fraunces,Georgia,serif; font-size:1.73cqw; line-height:1;
+  font-weight:400; letter-spacing:0; color:var(--nav-red);
+}
+.site-menu.editorial-menu .nav-entry .nav-rule {
+  position:absolute; left:9.045%; top:50%; transform:translateY(-50%);
+  width:max(1px,.13cqw); height:4.59cqh; min-height:2.8cqw;
+  background:var(--nav-red); opacity:.72;
+}
+.nav-photo {position:absolute; overflow:hidden;}
+.nav-photo img {width:100%; height:100%; object-fit:cover;}
+.nav-table {z-index:20; left:47.77%; top:35.41%; width:22.52%; height:51.39%;}
+.nav-table img {object-position:52% 50%;}
+.nav-arch {z-index:30; left:66.31%; top:5.74%; width:25.25%; height:61.82%;}
+.nav-arch img {object-position:50% 50%;}
+.nav-agave {z-index:25; left:70.23%; top:67.56%; width:29.77%; height:32.44%; overflow:visible;}
+/* Preserve the transparent leaves above the wall region.
+   The scene, not this layer, clips extensions at the viewport edge. */
+.nav-agave img {position:absolute; width:100%; height:auto; left:0; bottom:0;}
+.nav-star {position:absolute; z-index:40; left:51.76%; top:15.79%; width:8.9%; aspect-ratio:698/844; transform-origin:center;}
+.nav-star img {position:absolute; width:166.33238%; height:auto; left:-31.51862%; top:-28.90995%;}
+.nav-botanical {position:absolute; z-index:15; left:2.19%; top:79.04%; width:26.78%; aspect-ratio:956/375;}
+.nav-botanical img {position:absolute; width:165.58577%; height:auto; left:-7.94979%; top:-153.06667%;}
+.nav-close {position:absolute; z-index:50; left:calc(94.665% - 24px); top:calc(4.355% - 24px); width:48px; height:48px; padding:12px; border:0; border-radius:0; background:none; color:var(--nav-green); display:grid; place-items:center;}
+.nav-close svg {width:clamp(18px,1.53cqw,25px); height:auto; overflow:hidden;}
+.nav-close path {stroke:currentColor; stroke-width:1.4; fill:none; stroke-linecap:round;}
+.nav-close-stroke {transform-box:view-box; transform-origin:12px 12px;}
+.nav-close svg {pointer-events:none;}
+.editorial-menu a:focus-visible,.editorial-menu button:focus-visible {outline:2px solid var(--nav-red); outline-offset:6px;}
+.editorial-menu .nav-entry:focus-visible {outline-offset:4px;}
+@media(hover:hover) and (pointer:fine) {
+  .editorial-menu .nav-entry:hover .nav-label {color:var(--nav-red);}
+  .nav-close:hover {color:var(--nav-red);}
+}
+/* Approved PC reference: images/nav-prototype-desktop.png, 1024 × 711.
+   Desktop-only override: mobile rules and shared source assets are unchanged. */
+@media(min-width:901px) {
+  .nav-forest {left:59.277344%; width:19.628906%;}
+  .nav-signature {left:5.761719%; top:4.360056%; width:11.914063%;}
+  .site-menu.editorial-menu .nav-index > .nav-entry {left:4.882813%; width:43.066406%;}
+  .site-menu.editorial-menu .nav-index > .nav-entry-1 {top:16.877637%; height:18.284107%;}
+  .site-menu.editorial-menu .nav-index > .nav-entry-2 {top:37.552743%; height:10.68917%;}
+  .site-menu.editorial-menu .nav-index > .nav-entry-3 {top:51.336146%; height:10.87623%;}
+  .site-menu.editorial-menu .nav-index > .nav-entry-4 {top:65.963432%; height:9.985935%;}
+  .site-menu.editorial-menu .nav-entry .nav-label {left:14.512472%; letter-spacing:-.09038em; font-size:7.046094cqw;}
+  .site-menu.editorial-menu .nav-entry-1 .nav-label {left:11.791383%; font-size:13.563379cqw; letter-spacing:-.07087em;}
+  .site-menu.editorial-menu .nav-entry-2 .nav-label {top:.390625cqw;}
+  .site-menu.editorial-menu .nav-entry-3 .nav-label {top:.423177cqw; font-size:7.169727cqw; letter-spacing:-.09231em;}
+  .site-menu.editorial-menu .nav-entry-4 .nav-label {font-size:6.917285cqw; letter-spacing:-.08877em;}
+  .site-menu.editorial-menu .nav-entry .nav-number {font-size:1.953125cqw;}
+  .site-menu.editorial-menu .nav-entry .nav-rule {left:9.070295%; width:1px; height:3.125cqw; min-height:0;}
+  .nav-table {left:48.730469%; top:36.146273%; width:22.949219%; height:52.601969%;}
+  .nav-table img {object-position:50% 50%;}
+  .nav-arch {left:67.675781%; top:5.907173%; width:25.78125%; height:63.150492%;}
+  .nav-agave {left:71.679688%; top:69.057665%; width:28.320313%; height:30.942335%; z-index:35;}
+  .nav-agave img {width:140.38%; left:-14%;}
+  .nav-star {left:52.929688%; top:16.174402%; width:8.984375%;}
+  .nav-botanical {left:2.246094%; top:80.872011%; width:26.953125%;}
+  .nav-close {left:calc(96.679688% - 24px); top:calc(4.500703% - 24px);}
+  .nav-close svg {width:1.757813cqw;}
+}
+/* Approved MOBILE reference: images/nav-prototype-mobile.png, 576 × 1024.
+   A separate portrait composition, not the desktop scene reduced. Text remains HTML.
+   On taller phones extra height belongs to the photographic area, not the type. */
+@media(max-width:900px) {
+  .editorial-nav {display:block; height:max(100dvh,177.777778vw); min-height:0; background-size:cover;}
+  .nav-signature {left:7.986111%; top:5.902778cqw; width:19.618056%;}
+  .nav-close {position:absolute; left:calc(93.75% - 24px); top:calc(7.118056cqw - 24px); width:48px; height:48px;}
+  .nav-close svg {width:20px;}
+  .editorial-menu .nav-index {position:absolute; inset:0; margin:0;}
+  .site-menu.editorial-menu .nav-index > .nav-entry {
+    position:absolute; left:7.638889%; width:60%; height:11.458333cqw;
+    min-height:44px; display:block; margin:0; padding:0;
+  }
+  .site-menu.editorial-menu .nav-index > .nav-entry-1 {top:19.097222cqw; height:17.361111cqw;}
+  .site-menu.editorial-menu .nav-index > .nav-entry-2 {top:38.194444cqw;}
+  .site-menu.editorial-menu .nav-index > .nav-entry-3 {top:52.604167cqw;}
+  .site-menu.editorial-menu .nav-index > .nav-entry-4 {top:67.361111cqw;}
+  .site-menu.editorial-menu .nav-entry .nav-label {
+    position:absolute; left:15.335648%; top:0; font-size:10.328819cqw;
+    letter-spacing:-.06858em; line-height:1;
+  }
+  .site-menu.editorial-menu .nav-entry-1 .nav-label {left:13.888889%; top:1.5625cqw; font-size:16.878819cqw; letter-spacing:-.03795em;}
+  .site-menu.editorial-menu .nav-entry-2 .nav-label {top:1.215278cqw; letter-spacing:-.06858em;}
+  .site-menu.editorial-menu .nav-entry-3 .nav-label {left:16.203704%; top:1.215278cqw; letter-spacing:-.07293em;}
+  .site-menu.editorial-menu .nav-entry-4 .nav-label {left:16.203704%; top:.694444cqw; font-size:10.368403cqw; letter-spacing:-.08262em;}
+  .site-menu.editorial-menu .nav-entry .nav-number {left:0; top:50%; font-size:3.125cqw; transform:translateY(-50%);}
+  .site-menu.editorial-menu .nav-entry .nav-rule {left:9.837963%; top:50%; width:1px; height:4.861111cqw; min-height:0; transform:translateY(-50%);}
+  .nav-forest {left:70.486111%; top:0; width:16.319444%; height:100%;}
+  .nav-star {left:72.048611%; right:auto; top:24.131944cqw; width:13.888889%;}
+  .nav-table {
+    left:15.104167%; top:58.59375%; width:42.1875%; height:33.886719%;
+    /* Reserve paper for the botanical ink: 100% - table top - botanical bottom,
+       minus the flower's intrinsic visible height (40.625cqw × 375 / 956). */
+    max-height:calc(39.355469% - 15.935539cqw - clamp(10px,2cqw,16px));
+  }
+  .nav-table img {object-position:50% 50%;}
+  .nav-arch {left:52.604167%; top:44.628906%; width:38.368056%; height:38.28125%;}
+  .nav-agave {left:57.118056%; top:82.714844%; width:42.881944%; height:17.285156%; overflow:visible; z-index:35;}
+  .nav-botanical {left:2.777778%; top:auto; bottom:2.050781%; width:40.625%; z-index:40;}
+}
+/* Current section: the orange emphasis is state, never a permanent first link. */
+.site-menu.editorial-menu[data-current-section] .nav-entry .nav-label {color:var(--nav-green);}
+.site-menu.editorial-menu[data-current-section] .nav-entry[aria-current="location"] .nav-label {color:var(--nav-red);}
+.site-menu.editorial-menu[data-current-section]:not([data-current-section="la-casa"]) .nav-entry .nav-label {
+  left:14.512472%; top:50%; font-size:var(--nav-label-size,6cqw);
+  margin-top:calc(var(--nav-label-size,6cqw) * -.5);
+  letter-spacing:-.075em; line-height:1;
+}
+@media(max-width:900px) {
+  .site-menu.editorial-menu[data-current-section]:not([data-current-section="la-casa"]) .nav-entry .nav-label {
+    left:15.335648%; font-size:var(--nav-label-size,8.6cqw);
+    margin-top:calc(var(--nav-label-size,8.6cqw) * -.5);
+    letter-spacing:-.055em;
+  }
+}
+/* Owner-requested tighter active type: -.075em replaces the too-subtle -.039108em.
+   ManEater remains unwarped; only active labels receive this refinement.
+   Numbers and inactive type retain their existing styles. */
+.site-menu.editorial-menu[data-current-section] .nav-entry[aria-current="location"] .nav-label {
+  color:#a62813;
+  letter-spacing:-.075em;
+}
+/* Keep the existing desktop footprint rather than widening into photographs.
+   The section controller also measures this rule when fitting other active labels. */
+@media(min-width:901px) {
+  .site-menu.editorial-menu[data-current-section="la-casa"] .nav-entry-1 .nav-label {
+    font-size:12.69cqw;
+    letter-spacing:-.075em;
+    top:.44cqw;
+  }
+}
+@media(max-width:900px) {
+  .site-menu.editorial-menu[data-current-section="la-casa"] .nav-entry-1 .nav-label {
+    letter-spacing:-.075em;
+  }
+}
+@media(prefers-reduced-motion:reduce) {.editorial-menu * {scroll-behavior:auto!important;}}
+@media(forced-colors:active) {
+  .editorial-nav {background:Canvas;}
+  .nav-forest,.nav-art {display:none;}
+  .site-menu.editorial-menu .nav-entry .nav-label,.site-menu.editorial-menu .nav-entry .nav-number {color:LinkText;}
+  .nav-close {color:ButtonText;}
+}
